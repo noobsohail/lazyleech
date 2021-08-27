@@ -19,7 +19,6 @@ import tempfile
 from pyrogram import Client, filters
 from .. import ALL_CHATS, help_dict, BOT_USERNAME
 from ..utils.misc import convert_to_jpg, get_file_mimetype, watermark_photo
-from config import Config
 
 @Client.on_message(filters.command(['thumbnail', 'savethumbnail', 'setthumbnail', f'thumbnail{BOT_USERNAME}', f'savethumbnail{BOT_USERNAME}', f'setthumbnail{BOT_USERNAME}']) & filters.chat(ALL_CHATS))
 async def savethumbnail(client, message):
