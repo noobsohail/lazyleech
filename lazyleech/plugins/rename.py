@@ -23,11 +23,11 @@ import time
 
 from pyrogram import Client, filters
 
-from .. import ALL_CHATS, ForceDocumentFlag, SendAsZipFlag, PROGRESS_UPDATE_DELAY
+from .. import ALL_CHATS, BOT_USERNAME, ForceDocumentFlag, SendAsZipFlag, PROGRESS_UPDATE_DELAY
 from ..utils.upload_worker import _upload_file
 
 
-@Client.on_message(filters.command(['rename', 'filerename']) & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command(['rename', 'filerename', f'rename{BOT_USERNAME}', f'filerename{BOT_USERNAME}']) & filters.chat(ALL_CHATS))
 async def rename(client, message):
     text = (message.text or message.caption).split(None, 1)
     command = text.pop(0).lower()

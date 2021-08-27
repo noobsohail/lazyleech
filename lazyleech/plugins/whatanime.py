@@ -28,10 +28,10 @@ from datetime import timedelta
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from urllib.parse import quote as urlencode
-from .. import ALL_CHATS, help_dict, session
+from .. import ALL_CHATS, BOT_USERNAME, help_dict, session
 from ..utils.upload_worker import progress_callback_data
 
-@Client.on_message(filters.command('whatanime') & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command('whatanime', f'whatanime{BOT_USERNAME}') & filters.chat(ALL_CHATS))
 async def whatanime(c: Client, m: Message):
     media = m.photo or m.animation or m.video or m.document
     if not media:

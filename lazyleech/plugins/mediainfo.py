@@ -18,9 +18,9 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from lazyleech.utils.media import post_to_telegraph, runcmd, safe_filename
-from .. import ALL_CHATS
+from .. import ALL_CHATS, BOT_USERNAME
 
-@Client.on_message(filters.command('mediainfo') & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command('info', 'info{BOT_USERNAME}') & filters.chat(ALL_CHATS))
 async def mediainfo(client, message):
     reply = message.reply_to_message
     if not reply:

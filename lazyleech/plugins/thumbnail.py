@@ -17,10 +17,11 @@
 import os
 import tempfile
 from pyrogram import Client, filters
-from .. import ALL_CHATS, help_dict
+from .. import ALL_CHATS, help_dict, BOT_USERNAME
 from ..utils.misc import convert_to_jpg, get_file_mimetype, watermark_photo
+from config import Config
 
-@Client.on_message(filters.command(['thumbnail', 'savethumbnail', 'setthumbnail']) & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command(['thumbnail', 'savethumbnail', 'setthumbnail', f'thumbnail{BOT_USERNAME}', f'savethumbnail{BOT_USERNAME}', f'setthumbnail{BOT_USERNAME}']) & filters.chat(ALL_CHATS))
 async def savethumbnail(client, message):
     reply = message.reply_to_message
     document = message.document
@@ -57,7 +58,7 @@ async def savethumbnail(client, message):
     else:
         await message.reply_text('Cannot find thumbnail')
 
-@Client.on_message(filters.command(['clearthumbnail', 'rmthumbnail', 'delthumbnail', 'removethumbnail', 'deletethumbnail']) & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command(['clearthumbnail', 'rmthumbnail', 'delthumbnail', 'removethumbnail', 'deletethumbnail', f'clearthumbnail{BOT_USERNAME}', f'rmthumbnail{BOT_USERNAME}', f'delthumbnail{BOT_USERNAME}', f'deletethumbnail{BOT_USERNAME}', f'removethumbnail{BOT_USERNAME}',]) & filters.chat(ALL_CHATS))
 async def rmthumbnail(client, message):
     for path in ('thumbnail', 'watermarked_thumbnail'):
         path = os.path.join(str(message.from_user.id), f'{path}.jpg')

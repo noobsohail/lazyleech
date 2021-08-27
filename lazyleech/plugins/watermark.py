@@ -17,10 +17,11 @@
 import os
 import tempfile
 from pyrogram import Client, filters
-from .. import ALL_CHATS, help_dict
+from .. import ALL_CHATS, help_dict, BOT_USERNAME
 from ..utils.misc import get_file_mimetype, watermark_photo
+from config import Config
 
-@Client.on_message(filters.command(['watermark', 'savewatermark', 'setwatermark']) & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command(['watermark', 'savewatermark', 'setwatermark', f'watermark{BOT_USERNAME}', f'savewatermark{BOT_USERNAME}', f'setwatermark{BOT_USERNAME}',]) & filters.chat(ALL_CHATS))
 async def savewatermark(client, message):
     reply = message.reply_to_message
     document = message.document
@@ -67,7 +68,7 @@ async def savewatermark(client, message):
     else:
         await message.reply_text('Cannot find watermark')
 
-@Client.on_message(filters.command(['clearwatermark', 'rmwatermark', 'delwatermark', 'removewatermark', 'deletewatermark']) & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command(['clearwatermark', 'rmwatermark', 'delwatermark', 'removewatermark', 'deletewatermark', f'clearwatermark{BOT_USERNAME}', f'rmwatermark{BOT_USERNAME}', f'delwatermark{BOT_USERNAME}', f'removewatermark{BOT_USERNAME}', f'deletewatermark{BOT_USERNAME}',]) & filters.chat(ALL_CHATS))
 async def rmwatermark(client, message):
     for path in ('watermark', 'watermarked_thumbnail'):
         path = os.path.join(str(message.from_user.id), f'{path}.jpg')

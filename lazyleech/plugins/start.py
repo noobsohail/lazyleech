@@ -21,12 +21,11 @@ from pykeyboard import InlineKeyboard
 async def start_cmd(client, message):
 
     msg = f"""
-<b>Hi, I am Torrent King.</b>
-Sorry But Due to some 18+ Leechers I am no longer working in Private, Please Join our Leech/Mirror Group Instead
+<b>Hi, I Am Alive.</b>
         """
     buttons = InlineKeyboard(row_width=2)
     buttons.add(
         InlineKeyboardButton(
-            'Join Now', url='https://t.me/joinchat/I0r_UQNiPHdlYWFl',
+            'Join Now', url='https://t.me/indianimein',
         ))
     await message.reply(msg, reply_markup=buttons)
