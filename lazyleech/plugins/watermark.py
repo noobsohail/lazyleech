@@ -19,7 +19,6 @@ import tempfile
 from pyrogram import Client, filters
 from .. import ALL_CHATS, help_dict, BOT_USERNAME
 from ..utils.misc import get_file_mimetype, watermark_photo
-from config import Config
 
 @Client.on_message(filters.command(['watermark', 'savewatermark', 'setwatermark', f'watermark{BOT_USERNAME}', f'savewatermark{BOT_USERNAME}', f'setwatermark{BOT_USERNAME}',]) & filters.chat(ALL_CHATS))
 async def savewatermark(client, message):
